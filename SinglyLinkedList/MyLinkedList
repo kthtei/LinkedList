@@ -87,6 +87,7 @@ class MyLinkedList {
         size--;
     }
     
+    /** Returns boolean if there is a cycle in a linked list. */
     public boolean hasCycle(Node head) {
         if (head == null) return false;
         Node walker = head;
@@ -99,6 +100,7 @@ class MyLinkedList {
         return false;
     }
     
+    /** Returns the node where the cycle begins. */
     public ListNode detectCycle(ListNode head) {
         if (head == null) return null;
         Node walker = head;        
