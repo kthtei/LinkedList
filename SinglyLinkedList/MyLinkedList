@@ -86,6 +86,37 @@ class MyLinkedList {
         n.next = n2.next;
         size--;
     }
+    
+    public boolean hasCycle(Node head) {
+        if (head == null) return false;
+        Node walker = head;
+        Node runner = head;
+        while (runner.next != null && runner.next.next != null) {
+            walker = walker.next;
+            runner = runner.next.next;
+            if (walker == runner) return true;
+        }
+        return false;
+    }
+    
+    public ListNode detectCycle(ListNode head) {
+        if (head == null) return null;
+        Node walker = head;        
+        Node runner = head;
+        while (runner.next != null && runner.next.next != null) {
+            walker = walker.next;
+            runner = runner.next.next;
+            if (walker == runner) {
+                Node walker2 = head;
+                while (walker != walker2) {
+                    walker = walker.next;
+                    walker2 = walker2.next;                    
+                }
+                return walker;
+            }       
+        }
+        return null;
+    }    
 }
 
 /**
