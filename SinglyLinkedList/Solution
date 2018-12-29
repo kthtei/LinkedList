@@ -30,8 +30,7 @@ public class Solution {
         return a;
     }        
     
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        
+    public ListNode removeNthFromEnd(ListNode head, int n) {        
         ListNode tail = head;
         ListNode prev = head;
         int size = 1;
@@ -52,6 +51,19 @@ public class Solution {
         if (prev.next.next != null) prev.next = prev.next.next;
         else prev.next = null;
         return head;
-    }    
+    } 
     
+    public ListNode reverseList(ListNode head) {
+        ListNode pointer = head;
+        if (head == null) return null;
+        while (head.next != null) {
+            ListNode tmp = head.next;
+            if (tmp.next == null) head.next = null;
+            else head.next = tmp.next;                        
+            tmp.next = pointer;
+            pointer = tmp;
+        }
+        head = pointer;        
+        return head;
+    }
 }
