@@ -68,7 +68,6 @@ public class Solution {
     }
     
     public ListNode removeElements(ListNode head, int val) {
-        if (head == null) return head;
         
         ListNode slow = new ListNode(0);
         slow.next = head;
@@ -77,7 +76,7 @@ public class Solution {
         while (fast != null) {
             if (fast.val == val) {
                 if (fast == head) head = head.next;
-                if (fast == null) slow.next = null;
+                if (fast.next == null) slow.next = null;
                 slow.next = fast.next;
                 fast = fast.next;
                 continue;
