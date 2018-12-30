@@ -86,4 +86,22 @@ public class Solution {
         }
         return head;        
     }
+    
+    public ListNode oddEvenList(ListNode head) {
+        if (head == null) return null;
+        ListNode odd = head;
+        ListNode even = odd.next;
+        ListNode evenHead = even;
+        while (even != null && odd != null) {
+            if (even.next == null) break;
+            else {
+                odd.next = even.next;
+                odd = even.next;   
+            }
+            even.next = odd.next == null ? null : odd.next;
+            even = odd.next;
+        }
+        odd.next = evenHead;
+        return head;
+    }
 }
