@@ -104,4 +104,38 @@ public class Solution {
         odd.next = evenHead;
         return head;
     }
+    
+    public boolean isPalindrome(ListNode head) {
+        if (head == null) return true;
+        ListNode start = head;
+        ListNode tail = head;
+        // ListNode checker = head;
+        int count = 1;
+        int startCount = 1;
+    
+        while (tail.next != null) {
+            tail = tail.next;
+            count++;
+        }
+        
+        int endCount = 1;
+        
+        if (start.val == tail.val) {        
+            startCount++;
+            while (endCount != count / 2 + 1) {
+                ListNode checker = head;
+                for (int i = 0; i <= count - startCount; i++) {
+                    checker = checker.next;
+                }
+                
+                if (start.val == checker.val) {
+                    start = start.next;
+                    startCount++;                        
+                } else return false;
+                endCount++;                         
+            }
+            return true;
+        } 
+        return false;        
+    }
 }
